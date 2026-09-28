@@ -36,7 +36,7 @@ export class FullTimeEmployee extends Employee implements IEmployee {
         }
     }
     displayInformation(): string {
-        return `${this.firstName} ${this.lastName} Rank: ${this.rank} Address: ${this.address} SSN: ${this.ssn} Age: ${this.age} Salary: ${this.calculateCompensation()} `;
+        return `Full Time Employee: ${this.firstName} ${this.lastName} Rank: ${this.rank} Address: ${this.address} SSN: ${this.ssn} Age: ${this.age} Salary: ${this.calculateCompensation()} `;
     }
     calculateCompensation(): number {
         return this.salary + this.calculateSalary();
