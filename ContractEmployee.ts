@@ -22,7 +22,8 @@ export class ContractEmployee extends Employee implements IEmployee {
 
 
     displayInformation(): string {
-        return `Contract Employee: ${this.firstName} ${this.lastName} Rank: ${this.rank} Address: ${this.address} SSN: ${this.ssn} Age: ${this.age} Salary: ${this.calculateCompensation()} `;
+        return `Contract Employee: ${this.firstName} ${this.lastName} Rank: ${this.rank}
+         Address: ${this.address} SSN: ${this.ssn} Age: ${this.age} Salary: ${this.calculateCompensation()} `;
     }
     calculateCompensation(): number {
         if(this.hours > 40){
@@ -33,9 +34,15 @@ export class ContractEmployee extends Employee implements IEmployee {
         }
     }
     saveEmployee(): void {
-        this.validateAge();
-        this.validateRank();
-        this.validateSSN();
+        let ageValid = this.validateAge();
+        let rankValid = this.validateRank();
+        let ssnValid = this.validateSSN();
+        if(ageValid && rankValid && ssnValid){
+            console.log('Contract Employee saved');
+        } else {
+            console.log('Contract employee not saved');
+            
+        }
     }
 
 }

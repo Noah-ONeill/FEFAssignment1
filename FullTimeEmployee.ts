@@ -32,19 +32,27 @@ export class FullTimeEmployee extends Employee implements IEmployee {
         } else if (this.overtimeHours > 30) {
             return ((this.salary / 40) * this.overtimeHours * 2);
         } else {
-            return this.salary;
+            return 0;
         }
     }
     displayInformation(): string {
-        return `Full Time Employee: ${this.firstName} ${this.lastName} Rank: ${this.rank} Address: ${this.address} SSN: ${this.ssn} Age: ${this.age} Salary: ${this.calculateCompensation()} `;
+        return `Full Time Employee: ${this.firstName} ${this.lastName} Rank: ${this.rank} 
+                Address: ${this.address} SSN: ${this.ssn} Age: ${this.age}
+                Salary: ${this.calculateCompensation()} Bonus: ${this.bonus} `;
     }
     calculateCompensation(): number {
         return this.salary + this.calculateSalary();
     }
     saveEmployee(): void {
-        this.validateAge();
-        this.validateRank();
-        this.validateSSN();
+        let ageValid = this.validateAge();
+        let rankValid = this.validateRank();
+        let ssnValid = this.validateSSN();
+        if(ageValid && rankValid && ssnValid){
+            console.log('Full time Employee saved');
+        } else {
+            console.log('Full time employee not saved');
+            
+        }
     }
 
 }
